@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CentrAlign AI — Task Worker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">C</div>
+      <div>
+        <div class="brand-name">CentrAlign AI</div>
+        <div class="brand-sub">AI Employee Platform</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#task" class="active"><span>◆</span> Task Worker</a>
+      <a href="#finance"><span>▤</span> Finance System</a>
+      <a href="#repo"><span>▢</span> Invoice Repository</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="foot-label">Decision engine</div>
+      <div id="engine" class="engine">—</div>
+      <div class="foot-label">Approval threshold</div>
+      <div id="threshold" class="engine">—</div>
+      <div class="foot-note">Sandboxed environment · fictional data</div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div>
+        <h1>Autonomous Company Task Worker</h1>
+        <p class="muted">Give it a business task. It plans, acts on real systems, recovers from failures and proves the result.</p>
+      </div>
+      <div id="taskStatus" class="badge badge-idle">IDLE</div>
+    </header>
+
+    <div class="loop" id="loop">
+      <span data-phase="goal">Goal</span><i>→</i>
+      <span data-phase="understand">Understand</span><i>→</i>
+      <span data-phase="plan">Plan</span><i>→</i>
+      <span data-phase="execute">Execute</span><i>→</i>
+      <span data-phase="observe">Observe</span><i>→</i>
+      <span data-phase="adapt">Adapt</span><i>→</i>
+      <span data-phase="verify">Verify</span><i>→</i>
+      <span data-phase="complete">Complete</span>
+    </div>
+
+    <section class="card" id="task">
+      <div class="card-head">
+        <h2>New task</h2>
+        <button class="link" id="resetBtn" title="Clear all records from the sandbox finance system">Reset finance sandbox</button>
+      </div>
+      <textarea id="goal" rows="3">Find the latest invoice from Acme Corp, extract the invoice number, amount and due date, enter it into the internal finance system, verify it was saved correctly, and tell me when it is done.</textarea>
+      <div class="task-actions">
+        <div class="chips">
+          <span class="muted small">Try:</span>
+          <button class="chip" data-goal="Find the latest invoice from Acme Corp, extract the invoice number, amount and due date, enter it into the internal finance system, verify it was saved correctly, and tell me when it is done.">Acme — primary demo</button>
+          <button class="chip" data-goal="Find the latest invoice from Globex and add it to finance.">Globex — needs approval</button>
+          <button class="chip" data-goal="Find the latest invoice from Umbrella Corp and add it to finance.">Unknown vendor</button>
+        </div>
+        <div class="run">
+          <select id="mode" title="Decision engine">
+            <option value="auto">Auto engine</option>
+            <option value="demo">Demo (deterministic)</option>
+            <option value="llm">LLM</option>
+          </select>
+          <button id="runBtn" class="primary">RUN TASK</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="approval hidden" id="approval">
+      <div>
+        <div class="approval-title">⏸ Human approval required</div>
+        <div id="approvalMsg"></div>
+      </div>
+      <div class="approval-actions">
+        <button class="danger" id="rejectBtn">Reject</button>
+        <button class="primary" id="approveBtn">Approve</button>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <div class="card-head">
+          <h2>Live execution timeline</h2>
+          <span class="muted small" id="stepInfo"></span>
+        </div>
+        <ol class="timeline" id="timeline">
+          <li class="empty">Run a task to watch the agent work.</li>
+        </ol>
+      </section>
+
+      <div class="col">
+        <section class="card result hidden" id="resultCard"></section>
+
+        <section class="card">
+          <div class="card-head"><h2>Agent state</h2><span class="muted small" id="taskId"></span></div>
+          <div class="kv"><div class="k">Interpreted goal</div><div class="v" id="interpreted">—</div></div>
+          <div class="k" style="margin-top:14px">Plan <span class="muted small">(guide — next action chosen from observations)</span></div>
+          <ul class="plan" id="plan"><li class="muted">—</li></ul>
+          <div class="k" style="margin-top:14px">Discovered information</div>
+          <div class="facts" id="facts"><span class="muted">—</span></div>
+        </section>
+      </div>
+    </div>
+
+    <section class="card" id="finance">
+      <div class="card-head">
+        <h2>Internal finance system <span class="muted small">· SQLite · POST/GET /finance/invoices</span></h2>
+        <button class="link" id="refreshFinance">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Record</th><th>Invoice</th><th>Company</th><th class="num">Amount</th><th>Due date</th><th>Created</th></tr></thead>
+          <tbody id="financeRows"><tr><td colspan="6" class="muted">No records yet.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="repo">
+      <div class="card-head"><h2>Invoice repository <span class="muted small">· sandbox documents</span></h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Invoice</th><th>Company</th><th class="num">Amount</th><th>Issued</th><th>Due</th></tr></thead>
+          <tbody id="repoRows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

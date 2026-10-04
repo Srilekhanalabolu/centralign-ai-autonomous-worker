@@ -1,0 +1,28 @@
+{
+  "document_type": "invoice",
+  "invoice_number": "GLX-2026-0255",
+  "company": "Globex Corporation",
+  "vendor": {
+    "name": "Globex Corporation",
+    "gstin": "FAKE-GSTIN-255",
+    "address": "Sandbox Business Park, Hyderabad (fictional)"
+  },
+  "bill_to": {
+    "name": "CentrAlign Demo Pvt Ltd (fictional)",
+    "department": "Finance"
+  },
+  "issue_date": "2026-08-05",
+  "due_date": "2026-08-30",
+  "purchase_order": "PO-GLX-8702",
+  "currency": "INR",
+  "line_items": [
+    {
+      "description": "Consulting hours",
+      "quantity": 8,
+      "unit_price": "₹1,550"
+    }
+  ],
+  "amount": "₹12,400",
+  "status": "unpaid",
+  "notes": "Synthetic sandbox data for demonstration only."
+}

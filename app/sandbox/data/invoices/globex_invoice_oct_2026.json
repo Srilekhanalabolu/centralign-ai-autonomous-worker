@@ -1,0 +1,33 @@
+{
+  "document_type": "invoice",
+  "invoice_number": "GLX-2026-0312",
+  "company": "Globex Corporation",
+  "vendor": {
+    "name": "Globex Corporation",
+    "gstin": "FAKE-GSTIN-312",
+    "address": "Sandbox Business Park, Hyderabad (fictional)"
+  },
+  "bill_to": {
+    "name": "CentrAlign Demo Pvt Ltd (fictional)",
+    "department": "Finance"
+  },
+  "issue_date": "2026-10-03",
+  "due_date": "2026-10-25",
+  "purchase_order": "PO-GLX-8810",
+  "currency": "INR",
+  "line_items": [
+    {
+      "description": "Annual analytics licence",
+      "quantity": 1,
+      "unit_price": "₹60,000"
+    },
+    {
+      "description": "Onboarding workshop",
+      "quantity": 1,
+      "unit_price": "₹15,000"
+    }
+  ],
+  "amount": "₹75,000",
+  "status": "unpaid",
+  "notes": "Synthetic sandbox data for demonstration only."
+}

@@ -1,0 +1,33 @@
+{
+  "document_type": "invoice",
+  "invoice_number": "INV-2026-087",
+  "company": "Acme Corp",
+  "vendor": {
+    "name": "Acme Corp",
+    "gstin": "FAKE-GSTIN-087",
+    "address": "Sandbox Business Park, Hyderabad (fictional)"
+  },
+  "bill_to": {
+    "name": "CentrAlign Demo Pvt Ltd (fictional)",
+    "department": "Finance"
+  },
+  "issue_date": "2026-09-01",
+  "due_date": "2026-09-30",
+  "purchase_order": "PO-ACME-5521",
+  "currency": "INR",
+  "line_items": [
+    {
+      "description": "Cloud hosting – August",
+      "quantity": 1,
+      "unit_price": "₹28,000"
+    },
+    {
+      "description": "Premium support",
+      "quantity": 1,
+      "unit_price": "₹8,200"
+    }
+  ],
+  "amount": "₹36,200",
+  "status": "unpaid",
+  "notes": "Synthetic sandbox data for demonstration only."
+}

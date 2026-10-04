@@ -1,0 +1,33 @@
+{
+  "document_type": "invoice",
+  "invoice_number": "INV-2026-104",
+  "company": "Acme Corp",
+  "vendor": {
+    "name": "Acme Corp",
+    "gstin": "FAKE-GSTIN-104",
+    "address": "Sandbox Business Park, Hyderabad (fictional)"
+  },
+  "bill_to": {
+    "name": "CentrAlign Demo Pvt Ltd (fictional)",
+    "department": "Finance"
+  },
+  "issue_date": "2026-10-01",
+  "due_date": "2026-10-15",
+  "purchase_order": "PO-ACME-5634",
+  "currency": "INR",
+  "line_items": [
+    {
+      "description": "Cloud hosting – September",
+      "quantity": 1,
+      "unit_price": "₹31,000"
+    },
+    {
+      "description": "Data migration services",
+      "quantity": 5,
+      "unit_price": "₹3,500"
+    }
+  ],
+  "amount": "₹48,500",
+  "status": "unpaid",
+  "notes": "Synthetic sandbox data for demonstration only."
+}

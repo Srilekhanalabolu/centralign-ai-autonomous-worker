@@ -1,0 +1,28 @@
+{
+  "document_type": "invoice",
+  "invoice_number": "BTA-7781",
+  "company": "Beta Industries",
+  "vendor": {
+    "name": "Beta Industries",
+    "gstin": "FAKE-GSTIN-781",
+    "address": "Sandbox Business Park, Hyderabad (fictional)"
+  },
+  "bill_to": {
+    "name": "CentrAlign Demo Pvt Ltd (fictional)",
+    "department": "Finance"
+  },
+  "issue_date": "2026-10-02",
+  "due_date": "2026-10-20",
+  "purchase_order": "PO-BETA-0193",
+  "currency": "INR",
+  "line_items": [
+    {
+      "description": "Office supplies",
+      "quantity": 1,
+      "unit_price": "₹22,750"
+    }
+  ],
+  "amount": "₹22,750",
+  "status": "unpaid",
+  "notes": "Synthetic sandbox data for demonstration only."
+}
